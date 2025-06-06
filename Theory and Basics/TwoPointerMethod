@@ -1,0 +1,40 @@
+# 🎯 Two-Pointer Approach — Explained Like a Fun Game
+
+Imagine you have two friends, **Lefty** and **Righty**, playing on a line of toys (an array).  
+They both want to move around to find or fix things quickly.
+
+---
+
+## When to use two pointers?
+
+- When you want to process elements from **two directions** (start and end).  
+- When you want to **remove or rearrange elements in-place** without extra space.  
+- When you want to **merge or compare sorted lists/arrays**.  
+- When you want to **find pairs or subarrays** meeting some condition.
+
+---
+
+## 1. Two-pointer games: For loop vs While loop
+
+### The “for” loop game (Known steps)
+
+- Lefty starts at the beginning (index 0).  
+- Righty starts at the end (index n-1).  
+- They both know exactly how many steps to take.  
+- Each step, Lefty moves right by 1, Righty moves left by 1.  
+- They stop when they meet in the middle.
+
+**Example:** Reverse an array or check if it's a palindrome.
+
+for (int i = 0, j = arr.length - 1; i < j; i++, j--) {
+    // Compare or swap arr[i] and arr[j]
+}
+
+The “while” loop game (Unknown steps)
+Lefty and Righty start somewhere.
+
+They don’t know how many steps until a condition is met.
+
+Depending on what they see (like toys to move), they decide who moves.
+
+They keep going until they meet or some condition stops them.
