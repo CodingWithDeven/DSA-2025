@@ -142,7 +142,80 @@ while (left < right) {
 
 ---
 
-## 5. Bonus patterns & uses
+# 5. Two Pointers with Sorted Array — Move Pointers Based on Comparison
+
+---
+
+## When to Use:
+- You have a **sorted array**.
+- You want to find pairs (or subarrays) that meet a certain condition (e.g., sum equals a target).
+- You want to avoid nested loops with O(n²) time complexity and instead achieve O(n).
+
+---
+
+## How It Works:
+1. Start with **two pointers**:
+   - `left` at the start of the array (`0`)
+   - `right` at the end of the array (`n-1`)
+
+2. Calculate the sum (or compare the values) at these pointers.
+
+3. If the sum is **too small**, move the `left` pointer **right** (increment) to increase the sum.
+
+4. If the sum is **too big**, move the `right` pointer **left** (decrement) to decrease the sum.
+
+5. Keep moving pointers until:
+   - They meet (cross each other), or
+   - You find what you want (e.g., a pair with the target sum).
+
+---
+
+## Kid-Friendly Explanation:
+Imagine **Lefty** and **Righty** are picking toys with points.
+
+- Lefty picks a small-point toy from the start.
+- Righty picks a big-point toy from the end.
+- They add their toy points.
+
+If the total is **less than 10**, Lefty says:  
+> “I need a bigger toy!”  
+and moves right to pick a bigger toy.
+
+If the total is **more than 10**, Righty says:  
+> “I need a smaller toy!”  
+and moves left to pick a smaller toy.
+
+They keep trying until they find the perfect pair or cross paths.
+
+---
+
+## Code Example: Two-Sum in Sorted Array
+
+```java
+int left = 0, right = arr.length - 1;
+int target = 10;
+
+while (left < right) {
+    int sum = arr[left] + arr[right];
+    if (sum == target) {
+        System.out.println("Pair found: " + arr[left] + ", " + arr[right]);
+        break; // or continue searching for more pairs
+    } else if (sum < target) {
+        left++;  // sum too small, move left pointer right to increase sum
+    } else {
+        right--; // sum too big, move right pointer left to decrease sum
+    }
+}
+
+Why Is This Efficient?
+Because the array is sorted, you know exactly how to adjust your pointers to get closer to the target.
+
+No guessing or unnecessary scanning.
+
+Runs in O(n) time instead of O(n²).
+
+
+## Bonus patterns & uses
 
 - **Sliding Window:** two pointers moving forward to maintain a window meeting some condition.  
 - **Merging sorted arrays:** two pointers start at beginning of both arrays and move forward.  
