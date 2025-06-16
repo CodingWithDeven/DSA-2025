@@ -173,16 +173,3 @@ for (String word : words) {
 }
 System.out.println(result.toString().trim());
 ```
-
----
-
-## 🧪 Ready-to-Practice String Problems (Coming up next)
-
-- Reverse string
-- Palindrome check
-- First non-repeating char
-- Count vowels/consonants
-- Anagram check
-- Longest common prefix
-- Remove duplicates from string
-- Check if string is rotation of another
