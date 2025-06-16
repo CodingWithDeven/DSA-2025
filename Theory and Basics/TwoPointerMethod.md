@@ -214,6 +214,118 @@ No guessing or unnecessary scanning.
 
 Runs in O(n) time instead of O(n²).
 
+## Coding flowchart on when to use WHAT
+
+# ✅ Two-Pointer Pattern Decision Checklist + Flowchart
+
+Master the Two-Pointer technique by asking the right questions and applying the best-fit strategy. This guide makes it super clear when and why to use:
+
+- `i = 0, j = n - 1`
+- `i = 0, j = i + 1`
+- `i = 0, j = 0`
+- Read/Write pointers
+- Sliding Window
+- And more!
+
+---
+
+## 🔍 Step-by-Step Checklist
+
+### 🔹 Q1: Is the array **sorted**?
+
+- **YES** → Go to Q2  
+- **NO** → Go to Q4  
+
+---
+
+### 🔹 Q2: Are you looking for a pair with a specific **sum or difference**?
+
+- **YES** → Use `i = 0`, `j = n - 1`
+
+  - Move `i++` if sum is too **small**  
+  - Move `j--` if sum is too **big**  
+
+  ✅ Classic sorted array **two-sum**
+
+- **NO** → Go to Q3
+
+---
+
+### 🔹 Q3: Are you **removing duplicates** or filtering sorted elements?
+
+- **YES** → Use **Read-Write** pointer pattern  
+  `i` = slow writer, `j` = fast reader
+
+```java
+int i = 0;
+for (int j = 1; j < arr.length; j++) {
+    if (arr[j] != arr[i]) {
+        i++;
+        arr[i] = arr[j];
+    }
+}
+NO → Consider sliding window or merge techniques
+
+🔹 Q4: Do you want to check ALL pairs or combinations?
+YES → Use i = 0, j = i + 1 (nested loop)
+
+for (int i = 0; i < arr.length; i++) {
+    for (int j = i + 1; j < arr.length; j++) {
+        // Check arr[i] and arr[j]
+    }
+}
+
+Q5: Are you building or validating a window/range of values?
+YES → Use Sliding Window
+
+Start: i = 0, j = 0
+
+Expand with j++, shrink with i++ as needed
+
+int i = 0, sum = 0;
+for (int j = 0; j < arr.length; j++) {
+    sum += arr[j];
+    while (sum > target) {
+        sum -= arr[i];
+        i++;
+    }
+    if (sum == target) {
+        // Found window from i to j
+    }
+}
+
+
+ Q6: Do you want to rearrange/partition based on a condition?
+YES → Use i = 0, j = n - 1 with swapping
+
+✅ Like moving 0s to front, odds to back, etc.
+
+int i = 0, j = arr.length - 1;
+while (i < j) {
+    if (conditionWrongAtI) {
+        swap(arr, i, j);
+        j--;
+    } else {
+        i++;
+    }
+}
+
+           Is array sorted?
+                   |
+         ┌─────────┴────────────┐
+         |                      |
+     Yes (Sorted)           No (Unsorted)
+         |                      |
+Is it sum/diff pair?       All combinations?
+         |                      |
+   Yes → i = 0, j = n-1    → i = 0, j = i+1
+         |
+   No → Is it filtering?
+         |
+   Yes → Read/Write pattern
+   No → Sliding window or merge
+
+
 
 ## Bonus patterns & uses
 
